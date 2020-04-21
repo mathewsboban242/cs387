@@ -1,0 +1,2 @@
+2020-01-28 21:50:13.600 IST [24738] FATAL:  lock file "postmaster.pid" already exists
+2020-01-28 21:50:13.600 IST [24738] HINT:  Is another postmaster (PID 15054) running in data directory "/home/mathews/postgresql/dbis"?

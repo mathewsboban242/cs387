@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	</head>
+
+<body onload="func()">
+<input type="text" id="ideatxt" name="ideatxt"><br><br>
+<input type="button" id="addidea" value="Add Idea" onclick="myFunction()" onload="">
+
+<script>
+function myFunction() {
+
+	var x=document.getElementById("ideatxt").value;
+	axios.post('/api/ideas/', {
+	    content:x,
+	}).then(function (response){
+		console.log(response);
+		var ul = document.getElementById("idealist");
+		var li = document.createElement("li");
+		li.appendChild(document.createTextNode(x));
+		ul.appendChild(li);
+		document.getElementById("ideatxt").value = "";
+	}).catch(function (error) {
+		console.log(error);
+		});
+
+}
+
+function func(){
+	x=axios.get('/api/ideas/').then(function(response){
+		// handle success
+
+		var i;
+		for (i = 0; i < response.data.length; i++) {
+			y=response.data[i].content;
+			var ul = document.getElementById("idealist");
+			var li = document.createElement("li");
+			li.appendChild(document.createTextNode(y));
+			ul.appendChild(li);
+			console.log(response);
+		}
+
+		}).catch(function(error){
+		// handle error
+		console.log(error);
+		}).then(function(){
+		// always executed
+		});
+
+}
+
+</script>
+
+<ul id="idealist">
+</ul>
+
+
+
+</body>
+</html>

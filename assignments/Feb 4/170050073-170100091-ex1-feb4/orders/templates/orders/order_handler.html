@@ -1,0 +1,92 @@
+<html>
+<head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+}
+th {
+  text-align: left;
+}
+
+body {
+  background-color: linen;
+  margin: 10px; 
+}
+hr {
+    display: block;
+    width: 400px;
+    margin-before: 0.5em;
+    margin-after: 0.5em;
+    margin-start: auto;
+    margin-end: auto;
+    overflow: hidden;
+    border-style: inset;
+    border-width: 1px;
+}
+
+.row {
+}
+
+.left {
+   display: inline-block;
+   text-align: right;
+   width: 100px;
+   padding: 10px;
+}
+
+.right {
+   display: inline-block;
+   padding: 10px;
+}
+
+.error {{
+    color: red;
+}}
+
+</style>
+</head>
+
+<body>
+<h2>Your Order History</h2>
+{{ table | safe}}
+
+<form action="/add" method="post">{%csrf_token%}
+  <h2>Fancy another Idli from Badlu's?</h2>
+  <input type="hidden" name="table_name" value="student">
+ 
+  <div class="row">
+    <div class="left">Lovely Idlis</div>
+    <div class="right">
+      <input type="text" name="idli">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="left">Scrumptous Samosas</div>
+    <div class="right">
+      <input type="text" name="samosa">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="left">Titillating Tea</div>
+    <div class="right">
+      <input type="text" name="chai">
+    </div>
+  </div>
+ 
+
+ <div class = "row">
+   <div class="left"></div>
+ <div class="right">
+   <input type="submit" value="Submit" >
+ </div>
+</form>
+
+{{ st1 | safe}}
+
+</body>
